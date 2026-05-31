@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-deep:        #0A0806;
+  --color-deep-mid:    #130F0A;
+  --color-deep-light:  #1E1810;
+  --color-amber:       #D4780E;
+  --color-amber-bright: #F59020;
+  --color-amber-dim:   rgba(212, 120, 14, 0.12);
+  --color-warm-white:  #EDE6D6;
+  --color-sand:        #C4B99A;
+  --color-muted:       #60584A;
+  --color-muted-light: #8C8070;
+
+  --font-display: "Oswald", "Arial Narrow", ui-sans-serif;
+  --font-sans:    "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--color-deep);
+    color: var(--color-warm-white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgba(212, 120, 14, 0.35);
+    color: #F8C870;
+  }
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1);    opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-90vh) scale(0.2); opacity: 0; }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-mono    { font-family: var(--font-mono); }
+
+  .irie-grain {
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(212, 120, 14, 0.04) 79px,
+      rgba(212, 120, 14, 0.04) 80px
+    );
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 9999px;
+    background: rgba(212, 120, 14, 0.8);
+    animation: floatUp linear infinite;
+    pointer-events: none;
+  }
+}
