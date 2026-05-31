@@ -3,6 +3,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+ARG VITE_RAAS_API
+ENV VITE_RAAS_API=$VITE_RAAS_API
 RUN npm run build
 
 FROM nginx:alpine
